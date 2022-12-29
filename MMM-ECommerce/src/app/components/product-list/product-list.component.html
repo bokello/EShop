@@ -1,5 +1,30 @@
 
-<table class="table">
+<div class="main-content">
+  <div class="section-content section-content-p30">
+     <div class="container-fluid">
+        <div class="row">
+           
+            <!-- loop over products collection-->
+                
+          <div *ngFor="let tempProduct of products" class="col-md-3">
+
+             <div class="product-box">
+                
+                 <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+                 <h1> {{tempProduct.name}} </h1>
+                 <div class="price"> {{ tempProduct.unitPrice | currency: 'KES' }} </div>
+                 <a href="#" class="primary-btn"> Add to cart</a>
+                 </div>
+          </div>
+
+        </div>
+     </div>
+  </div>
+</div>
+
+
+
+<!--<table class="table">
    <thead class="thead-dark">
        <tr>
            <th> </th>           
@@ -12,11 +37,11 @@
        <tr *ngFor="let tempProduct of products">
          <td class="align-middle"> <img src="{{ tempProduct.imageUrl}}" /> </td>
          <td class="align-middle">{{tempProduct.name}} </td>
-         <td class="align-middle">{{tempProduct.unitPrice | currency:'USD'}} </td>
+         <td class="align-middle">{{tempProduct.unitPrice | currency:'KES'}} </td>
          <td class="align-middle">{{tempProduct.unitsInStock}} </td>
        </tr>
    </tbody>
-</table>
+</table> -->
 
 
 
