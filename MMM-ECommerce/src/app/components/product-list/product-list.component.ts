@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
+
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
@@ -20,7 +21,7 @@ export class ProductListComponent implements OnInit {
   // new properties for pagination
 
   thePageNumber: number = 1;
-  thePageSize: number = 10;
+  thePageSize: number = 2;
   theTotalElements: number = 0;
   
 
@@ -106,6 +107,14 @@ export class ProductListComponent implements OnInit {
           }
       )
 
+  }
+
+
+  updatePageSize(pageSize: string) {
+
+    this.thePageSize = +pageSize;
+    this.thePageNumber=1;
+    this.listProducts();
   }
 
 
