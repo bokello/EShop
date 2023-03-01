@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CartItem } from '../common/cart-item';
+import { Product } from '../common/product';
 
 @Injectable({
   providedIn: 'root'
@@ -17,37 +18,40 @@ export class CartService {
 
   addToCart(theCartItem: CartItem)
   {
+
      // check if we already have the item in our cart
     let alreadyExistsInCart: boolean = false;
-    let existingCartItem: CartItem | undefined;
+    let existingCartItem : CartItem | undefined;
 
-    if(this.cartItems.length > 0)
-    {
-      // find the item in the cart based on item id
+     if(this.cartItems.length > 0)
+     {
+        // find the item in the cart based on item id
 
-      for(let tempCartItem of this.cartItems)
-      {
-        if(tempCartItem.id === theCartItem.id){
-          existingCartItem = tempCartItem;
-          existingCartItem.quantity++;
+        for(let tempCartItem of this.cartItems)
+        {
+          if(tempCartItem.id === theCartItem.id){
+            existingCartItem = tempCartItem;
+            existingCartItem.quantity++;
 
-          break;
+            break;
+          }
         }
+
+       // check if we found it
+       alreadyExistsInCart = (existingCartItem != undefined);
+
       }
 
-      // check if we found it
-      alreadyExistsInCart = (existingCartItem != undefined);
-
-       if(!alreadyExistsInCart)
-       {
+      if(!alreadyExistsInCart)
+      {
           this.cartItems.push(theCartItem);
-       }
+      }
 
       // compute cart total price and total quantity
 
       this.computeCartTotals();
 
-    }
+    
      
   }
 
